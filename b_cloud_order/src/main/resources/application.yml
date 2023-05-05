@@ -1,0 +1,10 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: cloud-order-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9004/eureka
+      #defaultZone: http://peer1:9003/eureka,http://peer2:9004/eureka,http://peer3:9005/eureka
