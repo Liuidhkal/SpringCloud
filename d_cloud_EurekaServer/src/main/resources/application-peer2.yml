@@ -1,0 +1,9 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: peer2
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:9003/eureka,http://peer3:9005/eureka
