@@ -1,0 +1,73 @@
+server:
+  port: 9005
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            max-age: 3600
+            allowed-origin-patterns: "*" # spring boot2.4配置
+            #            allowed-origins: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+            allowed-methods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+      routes:
+#        - id: service1
+#          uri: https://www.yuque.com/
+#          order: 0
+#          predicates:
+#            - Path=/{segment}
+#        - id: service2
+#          uri: https://www.baidu.com/
+#          order: 1
+#          predicates:
+#            - Path=/**
+#        - id: service3
+#          uri: lb://cloud-payment-service
+#          order: 5
+#          predicates:
+#            - Path=/payment/**
+#        - id: service4
+#          uri: https://www.baidu.com
+#          order: 4
+#          predicates:
+#            - Query=smile
+#        - id: service3
+#          uri: https://www.baidu.com
+#          order: 2
+#          predicates:
+#            - Query=keep, pu.
+#            - Header=X-Request-Id, \d+
+#            - Cookie=sessionId, test
+#        - id: service6
+#          uri: http://127.0.0.1:9001
+#          order: 1
+#          predicates:
+#            - Path=/{segment}
+#          filters:
+#            - PrefixPath=/payment
+        - id: service14
+          uri: http://127.0.0.1:9001
+          predicates:
+            - Path=/9001/{segment}
+        - id: service15
+          uri: http://127.0.0.1:9000
+          predicates:
+            - Path=/9000/{segment}
+      default-filters:
+        - StripPrefix=1
+        - PrefixPath=/payment
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9004/eureka
