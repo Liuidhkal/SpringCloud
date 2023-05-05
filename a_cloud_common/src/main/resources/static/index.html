@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>-->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script>
+        function sendAjax() {
+            $.ajax({
+                method: 'GET',
+                url: "http://127.0.0.1:9005/9001/123",
+                /*url: "http://127.0.0.1:9001/payment/123",*/
+                contentType: 'application/json; charset=UTF-8',
+                success: function(o) {
+                    alert(o.id);
+                    alert(o.message);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<button onclick="sendAjax();" >send ajax</button>
+</body>
+</html>
